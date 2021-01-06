@@ -71,6 +71,8 @@
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Scripts\beam.cs" />
+    <Compile Include="Assets\Scripts\enemy.cs" />
+    <Compile Include="Assets\Scripts\enemyPool.cs" />
     <Compile Include="Assets\Scripts\spin.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.13f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
