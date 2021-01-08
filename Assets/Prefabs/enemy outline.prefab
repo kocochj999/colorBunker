@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1075857655149340013}
   - component: {fileID: 1075857655149340015}
   - component: {fileID: 1075857655149340000}
+  - component: {fileID: -5126459238786743305}
   m_Layer: 0
   m_Name: enemy outline
   m_TagString: Enemy
@@ -130,3 +131,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5126459238786743305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075857655149340012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2a681c0efe2f94388838595e959701, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
