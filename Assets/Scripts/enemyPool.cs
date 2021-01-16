@@ -19,7 +19,7 @@ public class enemyPool : MonoBehaviour
     private GameObject[] enemy;
     private float timeSinceLastSpawn;
     private float spawnRate = 2f;
-    private int currentEnemy = 0;
+    [SerializeField] private int currentEnemy = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,7 @@ public class enemyPool : MonoBehaviour
         for (int i = 0; i < poolSize; i++)
         {
             enemy[i] = Instantiate(enemyPrefab, initSpawnPos.transform.position, Quaternion.identity);
+            setColor(enemy[i], RandomColor());
         }
     }
 
@@ -81,8 +82,44 @@ public class enemyPool : MonoBehaviour
         }
         return spawnPostition;
     }
-    /*public Color RandomColor()
+    public ColorWeight RandomColor()
     {
-        return ColorUtility.;
-    }*/
+        int minPos = 1;
+        int maxPos = 3;
+        int randomColor = Random.Range(minPos, maxPos);
+        switch (randomColor)
+        {
+            case 1:
+                return ColorWeight.RED;
+            case 2:
+                return ColorWeight.BLUE;
+        }
+        return ColorWeight.RED;
+    }
+
+    public enum ColorWeight
+    {
+        RED,
+        BLUE
+    }
+    public void setColor(GameObject g, ColorWeight colorName)
+    {
+        Color tmp = g.GetComponent<SpriteRenderer>().color;
+        tmp = getColorCode(colorName);
+        g.GetComponent<SpriteRenderer>().color = tmp;
+    }
+    public Color getColorCode(ColorWeight colorName)
+    {
+        Color color;
+        switch (colorName)
+        {
+            case ColorWeight.BLUE:
+                color = new Color(0.15f, 0.15f, 1f);
+                return color;
+            case ColorWeight.RED:
+                color = new Color(1f, 0f, 0f);
+                return color;
+        }
+        return new Color(1f, 1f, 1f);
+    }
 }

@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &272014701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.56167096
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -571,6 +571,7 @@ GameObject:
   - component: {fileID: 428772362}
   - component: {fileID: 428772363}
   - component: {fileID: 428772364}
+  - component: {fileID: 428772365}
   m_Layer: 0
   m_Name: red bunker
   m_TagString: Untagged
@@ -609,6 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamObject: {fileID: 28461174}
   pie: {fileID: 425179112}
+  canShoot: 0
 --- !u!61 &428772364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -635,6 +637,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.51692915, y: 7.156617}
   m_EdgeRadius: 0
+--- !u!114 &428772365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428772361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a984c49b02fd3a04ea5e71b5bbfec525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8427821976661811289, guid: ad3120a49136de64caec5d0f4a213c54,
+    type: 3}
+  bulletStart: {fileID: 425179112}
+  canShoot: 0
+  timer: 0
 --- !u!224 &438412103 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
@@ -1041,7 +1060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626514980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43, y: 2.3, z: 0}
+  m_LocalPosition: {x: -0.59, y: 4.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1071,7 +1090,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665122487}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -0.77, z: 0}
+  m_LocalPosition: {x: 8.04, y: -0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1101,7 +1120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743903736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.92, y: 0.43, z: 0}
+  m_LocalPosition: {x: 24.86, y: 8.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1131,7 +1150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803369630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.4, y: -4.44, z: 0}
+  m_LocalPosition: {x: 7.28, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1168,7 +1187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1075857655149340012, guid: 5f74353f2b039c84f92279091f232e15,
     type: 3}
-  poolSize: 5
+  poolSize: 30
   spawn1: {fileID: 1239614028}
   spawn2: {fileID: 950589188}
   spawn3: {fileID: 1523101122}
@@ -1178,6 +1197,7 @@ MonoBehaviour:
   spawn7: {fileID: 1038781971}
   spawn8: {fileID: 665122487}
   initSpawnPos: {fileID: 743903736}
+  currentEnemy: 0
 --- !u!4 &843914800
 Transform:
   m_ObjectHideFlags: 0
@@ -1225,7 +1245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950589188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.06, y: 2.88, z: 0}
+  m_LocalPosition: {x: -8.86, y: 3.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1255,7 +1275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1038781971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.19, y: -0.77, z: 0}
+  m_LocalPosition: {x: -9.63, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1315,7 +1335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359976312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.34, y: -4.52, z: 0}
+  m_LocalPosition: {x: -0.58, y: -6.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1332,6 +1352,7 @@ GameObject:
   - component: {fileID: 1509173528}
   - component: {fileID: 1509173530}
   - component: {fileID: 1509173529}
+  - component: {fileID: 1509173531}
   m_Layer: 0
   m_Name: blue bunker
   m_TagString: Untagged
@@ -1396,6 +1417,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beamObject: {fileID: 449823799}
   pie: {fileID: 484422761}
+  canShoot: 0
+--- !u!114 &1509173531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509173527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a984c49b02fd3a04ea5e71b5bbfec525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8427821976661811289, guid: ad3120a49136de64caec5d0f4a213c54,
+    type: 3}
+  bulletStart: {fileID: 484422761}
+  canShoot: 0
+  timer: 0
 --- !u!1 &1523101122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523101122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.94, y: -4.27, z: 0}
+  m_LocalPosition: {x: -8.9, y: -4.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 843914800}
@@ -1490,7 +1529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1901537757
 Rigidbody2D:
   serializedVersion: 4
@@ -1503,7 +1542,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.56167096
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0

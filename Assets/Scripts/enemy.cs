@@ -13,26 +13,11 @@ public class enemy :MonoBehaviour
     }
     private void Update()
     {
-        Chase(target, moveSpeed);
-    }
-    public enum Color
-    {
-        RED,
-        BLUE
-    }
-    public string getColorCode(Color color)
-    {
-        string colorCode;
-        switch (color)
+        if(Vector2.Distance(target.position,transform.position) < 20f)
         {
-            case Color.BLUE:
-                colorCode = "FF0000" ;
-                return colorCode;
-            case Color.RED:
-                colorCode = "2626FF";
-                return colorCode;
+            Chase(target, moveSpeed);
         }
-        return "FFFFFF";
+       
     }
     public void Chase(Transform target, float moveSpeed)
     {
@@ -40,5 +25,13 @@ public class enemy :MonoBehaviour
         float rotationZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
         transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Bullet"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

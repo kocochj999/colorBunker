@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,17 +7,7 @@ public class beam : MonoBehaviour
 {
     public GameObject beamObject;
     public GameObject pie;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool canShoot;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Color collisionColor = collision.gameObject.GetComponent<SpriteRenderer>().color;
@@ -38,7 +29,7 @@ public class beam : MonoBehaviour
         if (collision.tag == "Enemy" && collision.gameObject.GetComponent<SpriteRenderer>().color == pie.gameObject.GetComponent<SpriteRenderer>().color)
         {
             changeBeamOpacity(1f);
-            Fire();
+            GetComponent<Gun>().Shooting(collision.gameObject);
         }
     }
     void changeBeamOpacity(float value)
@@ -46,10 +37,5 @@ public class beam : MonoBehaviour
         Color tmp = beamObject.GetComponent<SpriteRenderer>().color;
         tmp.a = value;
         beamObject.GetComponent<SpriteRenderer>().color = tmp;
-    }
-    void Fire()
-    {
-        Debug.Log("Shoot");
-
     }
 }
