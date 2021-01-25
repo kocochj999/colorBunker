@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class enemy :MonoBehaviour
 {
+    public Transform explosion;
     public Transform target;
     private float moveSpeed = 1f;
 
     private void Start()
     {
+        setEmission(false);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     private void Update()
@@ -31,7 +33,26 @@ public class enemy :MonoBehaviour
         if (collision.gameObject.tag.Equals("Bullet"))
         {
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            StartCoroutine( Death());
         }
+    }
+    IEnumerator Death()
+    {
+        makeTransparent();
+        setEmission(true);
+        yield return new WaitForSeconds(2f);
+        setEmission(false);
+        Destroy(gameObject);
+    }
+    public void setEmission(bool emit)
+    {
+        var em = explosion.GetComponent<ParticleSystem>().emission;
+        em.enabled = emit;
+    }
+    public void makeTransparent()
+    {
+        Color tmp = gameObject.GetComponent<SpriteRenderer>().color;
+        tmp.a = 0f;
+        gameObject.GetComponent<SpriteRenderer>().color = tmp;
     }
 }
